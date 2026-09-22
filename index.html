@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A small single-page application simulation: hash-based client-side routing, dynamic content loading, and state management, built with plain HTML/CSS/JS.">
+<title>SPA Simulation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="app-header">
+  <div class="header-inner">
+    <a class="brand" href="#/" data-link>
+      <span class="brand-mark" aria-hidden="true">SPA</span>
+      Simulation
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <a href="#/" data-route="/" data-link>Home</a>
+      <a href="#/about" data-route="/about" data-link>About</a>
+      <a href="#/projects" data-route="/projects" data-link>Projects</a>
+      <a href="#/contact" data-route="/contact" data-link>Contact</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Thin progress bar shown while a route's content is "loading" -->
+  <div class="route-progress" id="routeProgress" aria-hidden="true"></div>
+</header>
+
+<!-- Announces route changes to assistive technology; visually hidden -->
+<p id="routeAnnouncer" class="visually-hidden" role="status" aria-live="polite"></p>
+
+<main id="main-content">
+  <!-- tabindex="-1" lets JS move keyboard focus here on every route change,
+       without adding it to the normal Tab order -->
+  <div id="app" class="app-view" tabindex="-1"></div>
+</main>
+
+<footer class="app-footer">
+  <p>SPA Simulation — client-side routing demo. No backend; all "loading" is simulated.</p>
+</footer>
+
+<script src="js/routes.js"></script>
+<script src="js/router.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
